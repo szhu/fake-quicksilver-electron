@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "incremental": true,
+    "jsx": "preserve",
+    "lib": [
+      "dom.iterable",
+      "dom",
+      "es6"
+    ],
+    "noEmit": true,
+    "noImplicitAny": true,
+    "paths": {},
+    "typeRoots": [
+      "node_modules/@types",
+      "src/@types"
+    ],
+  },
+  "include": [
+    "src/**/*"
+  ],
+}

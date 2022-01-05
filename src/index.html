@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>App</title>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        font: 20px monospace;
+        user-select: none;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          background: #00000088;
+        }
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          background: #ffffff88;
+        }
+      }
+      html {
+        min-height: 100%;
+
+        display: flex;
+        flex-direction: column;
+      }
+      body {
+        margin: 0;
+        flex: 1 0 auto;
+
+        display: flex;
+        flex-direction: column;
+      }
+      #root {
+        flex: 1 0 auto;
+
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+    <script defer type="module" src="./index.tsx"></script>
+  </head>
+  <body>
+    <main id="root"></main>
+  </body>
+</html>
