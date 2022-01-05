@@ -24,8 +24,8 @@ Written by [Yogesh](https://ykumar.in/).
 
 ### Offcourse you can, run :
 
-`yarn react-start` will start the React app at http://localhost:3000.  
-`yarn react-build` will build the React app and package it in build folder.
+`yarn start:parcel` will start the React app at http://localhost:3000.  
+`yarn build:parcel` will build the React app and package it in build folder.
 
 ## Read more
 

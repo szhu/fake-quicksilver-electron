@@ -4,16 +4,22 @@
   "description": "Electron app build using ReactJS and Parcel web application bundler",
   "main": "src/electron.js",
   "targets": {
-    "main": false
+    "default": {
+      "distDir": "build",
+      "publicUrl": "./",
+      "source": "index.html"
+    }
   },
   "scripts": {
-    "react-start": "parcel -p 3000 index.html --dist-dir build",
-    "react-build": "parcel build index.html --dist-dir build --public-url ./",
-    "electron-build": "electron-builder -mwl",
-    "clean-build": "rm -rf build/ .cache .parcel-cache dist/",
-    "build": "yarn clean-build && yarn react-build && yarn electron-build",
-    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron . \"",
-    "test-bundle": "bundlesize"
+    "start:parcel": "parcel -p 3000",
+    "build:parcel": "parcel build",
+    "start:electron": "electron .",
+    "build:electron": "electron-builder",
+    "clean": "rm -rf -- build .cache .parcel-cache dist",
+    "build": "yarn clean && yarn build:parcel && yarn build:electron",
+    "build:all": "yarn build --mac --win --linux",
+    "start": "concurrently 'cross-env BROWSER=none yarn start:parcel' 'wait-on http://localhost:3000 && yarn start:electron'",
+    "test:bundle": "bundlesize"
   },
   "bundlesize": [
     {
