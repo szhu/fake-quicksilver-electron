@@ -13,7 +13,7 @@
   "scripts": {
     "start:parcel": "parcel -p 3000",
     "build:parcel": "parcel build",
-    "start:electron": "while true; do wait-on http://localhost:3000 && electron .; done",
+    "start:electron": "trap exit SIGINT; while true; do wait-on http://localhost:3000 && electron .; done",
     "build:electron": "electron-builder",
     "clean": "rm -rf -- build .cache .parcel-cache dist",
     "build": "yarn clean && yarn build:parcel && yarn build:electron",
@@ -23,18 +23,13 @@
   },
   "bundlesize": [
     {
-      "path": "./build/src.*.js",
+      "path": "./build/index.*.js",
       "maxSize": "250 kB"
-    },
-    {
-      "path": "./build/src.*.css",
-      "maxSize": "100 kB"
     }
   ],
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
-    "electron-download": "^4.1.1",
     "electron-is-dev": "^2.0.0",
     "esm": "^3.2.25",
     "file-icon": "4",
@@ -61,6 +56,7 @@
   },
   "homepage": "./",
   "devDependencies": {
+    "@electron/get": "^1.13.1",
     "@emotion/css": "^11.7.1",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",

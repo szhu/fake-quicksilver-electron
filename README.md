@@ -21,7 +21,7 @@ When the app is first opened, it'll stay running in the background.
 
 **To search:** Open the app again, or press Option-Space. To search for an app, quickly type your search query at the prompt. After 0.5 seconds of no input, the search will be executed.
 
-**To clear the search:** After the search result is displayed, press any key to start a new search. At any point, press Backspace to clear the search.
+**To clear the search:** Press Backspace.
 
 **To quit the app:** Press Cmd-Q while the search prompt is visible.
 

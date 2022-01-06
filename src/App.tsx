@@ -70,7 +70,7 @@ const App = () => {
           let queryIsSame;
           setQuery((newQuery) => {
             queryIsSame = newQuery === query;
-            return undefined;
+            return newQuery;
           });
           if (queryIsSame) {
             setResult(result);
@@ -97,6 +97,15 @@ const App = () => {
           el.removeAttribute("contentEditable");
         }}
         onKeyDown={(event) => {
+          if (
+            event.altKey ||
+            event.ctrlKey ||
+            event.metaKey ||
+            event.shiftKey
+          ) {
+            return;
+          }
+
           if (event.key.length === 1) {
             setQuery((query ?? "") + event.key);
           } else if (event.key === "Backspace") {
