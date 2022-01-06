@@ -13,12 +13,12 @@
   "scripts": {
     "start:parcel": "parcel -p 3000",
     "build:parcel": "parcel build",
-    "start:electron": "electron .",
+    "start:electron": "while true; do wait-on http://localhost:3000 && electron .; done",
     "build:electron": "electron-builder",
     "clean": "rm -rf -- build .cache .parcel-cache dist",
     "build": "yarn clean && yarn build:parcel && yarn build:electron",
     "build:all": "yarn build --mac --win --linux",
-    "start": "concurrently 'cross-env BROWSER=none yarn start:parcel' 'wait-on http://localhost:3000 && yarn start:electron'",
+    "start": "concurrently 'cross-env BROWSER=none yarn start:parcel' 'yarn start:electron'",
     "test:bundle": "bundlesize"
   },
   "bundlesize": [
@@ -46,27 +46,27 @@
     "@emotion/styled": "^11.6.0",
     "electron-download": "^4.1.1",
     "electron-is-dev": "^2.0.0",
+    "esm": "^3.2.25",
+    "file-icon": "4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "build": {
+    "productName": "Fake Quicksilver",
     "appId": "com.interestinglythere.electron-1c2bc6ff082dda165c6960c8",
     "files": [
-      "src/electron.js",
+      "src/{electron,main,preload}.js",
       "src/assets/*",
       "build/**/*"
     ],
     "mac": {
-      "target": "dmg",
-      "icon": "src/assets/logo.png"
+      "target": "dmg"
     },
     "win": {
-      "target": "nsis",
-      "icon": "src/assets/logo.png"
+      "target": "nsis"
     },
     "linux": {
       "target": "deb",
-      "icon": "src/assets/logo.png",
       "category": "Development"
     }
   },

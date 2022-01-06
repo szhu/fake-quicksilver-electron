@@ -11,6 +11,8 @@
       "dom",
       "es6"
     ],
+    "module": "esnext",
+    "moduleResolution": "node",
     "noEmit": true,
     "noImplicitAny": true,
     "paths": {},
