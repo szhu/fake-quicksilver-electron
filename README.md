@@ -1,51 +1,46 @@
-# React <img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-32.png" width=32> + Parcel <img src="https://parceljs.org/assets/parcel@2x.png" width=32> + Electron <img src="https://electronjs.org/images/favicon.ico" width="32"> = 🎉
+# Fake Quicksilver
 
-[![Buy me][badge_amazon]][amazon]
-[![Stars][badge_github_stars]][github_stars]
-[![Follow][github_followers]][github_follow]
-[![Fork][badge_github_fork]][github_fork]
-[![Follow_Twitter][badge_twitter_follow]][twitter_follow]
+| ![App screenshot, dark mode][] | ![App screenshot, light mode][] |
+| :----------------------------: | :-----------------------------: |
+|              Dark              |              Light              |
 
-[![Website][badge_website]][website]
-[![Fork][badge_github_issues]][github_issues]
+[App screenshot, dark mode]: docs/screenshot-2022-01-06-v1-dark.jpg
+[App screenshot, light mode]: docs/screenshot-2022-01-06-v1-light.jpg
 
-Bolierplate code for building multi-platform, production ready desktop apps using [Electron](https://electronjs.org/), [React](https://reactjs.irg) and [Parcel](https://parceljs.org/).
+This is a simple search-based app launcher, inspired by the [Nostromo interface](https://github.com/quicksilver/Nostromo) for the macOS launcher app [Quicksilver](https://qsapp.com/).
 
-Also contains CSS styling using [Semantic-UI-CSS](https://github.com/Semantic-Org/Semantic-UI-CSS)
+I'm currently learning [Electron][], and I made this app for practice. The interface is polished, but the actual search mechanism is slow.
 
-Written by [Yogesh](https://ykumar.in/).
+[Electron]: https://www.electronjs.org/
 
-## Scripts
+## Usage
 
-`yarn start` will start the Electron app and the React app at the same time.  
-`yarn build` will build the React app and package it along the Electron app.
+![App usage screen recording](docs/screenshot-2022-01-06-v1-demo.gif)
 
-## Just React ?
+When the app is first opened, it'll stay running in the background.
 
-### Offcourse you can, run :
+**To search:** Open the app again, or press Option-Space. To search for an app, quickly type your search query at the prompt. After 0.5 seconds of no input, the search will be executed.
 
-`yarn start:parcel` will start the React app at http://localhost:3000.  
-`yarn build:parcel` will build the React app and package it in build folder.
+**To clear the search:** After the search result is displayed, press any key to start a new search. At any point, press Backspace to clear the search.
 
-## Read more
+**To quit the app:** Press Cmd-Q while the search prompt is visible.
 
-You can read more about it in [my Medium article](https://medium.com/@yogeshkumarr/production-ready-electron-app-using-react-and-parcel-web-bundler-74dcda63f148).
+## Development
 
-## License
+The app has two components, the Electron app and the React app that runs in the Electron browser window. To start both in development mode: `yarn start`
 
-This code is released under the [MIT License](LICENSE).
+Alternatively, run `yarn start:parcel` and `yarn start:electron` in separate terminals.
 
-[amazon]: https://www.amazon.in/hz/wishlist/ls/3EFPKXDOTFOUO/
-[badge_amazon]: https://kumarryogeshh.github.io/badges/amazon.svg
-[github_followers]: https://img.shields.io/github/followers/kumarryogeshh?label=Follow&style=social
-[github_follow]: https://github.com/kumarryogeshh/electron-react-parcel-boilerplate
-[badge_github_fork]: https://img.shields.io/github/forks/kumarryogeshh/electron-react-parcel-boilerplate?label=Fork&style=social
-[github_fork]: https://github.com/kumarryogeshh/electron-react-parcel-boilerplate/fork
-[badge_github_stars]: https://img.shields.io/github/stars/kumarryogeshh/electron-react-parcel-boilerplate?style=social
-[github_stars]: https://github.com/kumarryogeshh/electron-react-parcel-boilerplate
-[badge_twitter_follow]: https://img.shields.io/twitter/follow/igoy_k?label=Follow&style=social
-[twitter_follow]: https://twitter.com/igoy_k
-[badge_website]: https://img.shields.io/website?url=http%3A%2F%2Fykumar.in
-[website]: http://www.ykumar.in
-[badge_github_issues]: https://img.shields.io/github/issues/kumarryogeshh/electron-react-parcel-boilerplate
-[github_issues]: https://github.com/kumarryogeshh/electron-react-parcel-boilerplate/issues
+The frontend of the app should work on all platforms, but the actual search uses Spotlight (via `mdfind`) and so will only work on macOS.
+
+To build for macOS: `yarn build --mac`
+
+To build for all platforms: `yarn build:all`
+
+## Credits
+
+Web app stack: [React](https://reactjs.org/), [Parcel](https://parceljs.org/), [Typescript](https://www.typescriptlang.org/), [Emotion](https://emotion.sh/)
+
+App stack: [Electron](https://electronjs.org/), [electron-builder](https://www.electron.build/)
+
+Template used: [kumarryogeshh/electron-react-parcel-boilerplate](https://github.com/kumarryogeshh/electron-react-parcel-boilerplate)
